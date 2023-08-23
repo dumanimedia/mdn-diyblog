@@ -15,8 +15,6 @@
   </li>
   {% endfor %}
 </ul>
-{% endif %}
-
 <p style="margin-top:24px;">
   {% if page.has_previous %}
     <a href="?page={{ page.previous_page_number }}">&laquo; previous</a>
@@ -30,4 +28,6 @@
     <a href="?page={{ page.next_page_number }}">next  &raquo;</a>
   {% endif %}
 </p>
+{% endif %}
+
 {% endblock content %}

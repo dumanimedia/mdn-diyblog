@@ -12,7 +12,8 @@
 
 <div>
   {% if posts|length <= 0 %}
-  <p>😓 User has no posts In the Database.</>
+  <p>😓 User has no posts In the Database.</p>
+  <a style="display:block;margin-top:16px;" class="auth" href="{% url 'create_post_page' %}">New Post</a>
   {% else %}
   <h3 class="home-head">Blog List</h3>
   <ul style="padding-left:20px;">

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<h1>Login Page</h1>
+
+<form method="post" action=".">
+  {% csrf_token %}
+  {{ form.as_div }}
+  <button style="margin-top:16px;" type="submit">Submit</button>
+</form>
+<ul style="margin-top:24px;">
+  <li>
+    Forgot password? <a href="{% url 'password_reset' %}">reset it</a>
+  </li>
+  <li>
+    Don't have an account <a href="{% url 'signup_page' %}">Sign up</a> here!
+  </li>
+</ul>
+{% endblock content %}

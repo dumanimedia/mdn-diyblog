@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIY Blog {% block title %}{% endblock title %} - MDN Blog Assignment</title>
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}" type="image/x-icon">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <script defer src="{% static 'js/main.js' %}"></script>
+  </head>
+  <body class="">
+    <header>
+      <div>
+        <img class="hamburger" src="{% static 'menu.svg' %}" alt="hamburger" />
+      </div>
+      <aside>
+        <ul class="nav-list">
+          <li><a href="{% url 'home_page' %}">Home</a></li>
+          <li><a href="{% url 'posts_page' %}">All Blogs</a></li>
+          <li><a href="{% url 'bloggers_page' %}">All Bloggers</a></li>
+        </ul>
+        <div class="auth-user">
+          {% if request.user.is_authenticated %}
+            <p>user: {{ request.user }}</p>
+            {% if not request.user.is_staff %}
+              <a class="auth" href="{% url 'become_blogger_page' %}">Become a Blogger</a>
+            {% else %}
+              <a class="auth" href="{% url 'create_post_page' %}">New Post</a>
+            {% endif %}
+            
+            <a class="auth" href="{% url 'password_change' %}">Change Password</a>
+            <a class="auth" href="{% url 'logout' %}">Logout</a>
+          {% else %}
+            <a class="auth" href="{% url 'login' %}">Login</a>
+            <a  class="auth" href="{% url 'signup_page' %}">Signup</a>
+          {% endif %}
+        </div>
+      </aside>
+    </header>
+    <main>
+      {% block content %}{% endblock content %}
+      <footer style="margin-top:75px;text-align:center;">
+        Copyright &copy; {% now "Y" %}. <a href="{% url 'home_page' %}">Diyblog</a>
+      </footer>
+    </main>
+  </body>
+</html>

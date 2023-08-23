@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block title %}Post Details{% endblock title %}
+
+{% block content %}
+<h1>{{post.title}}</h1>
+<p>
+  <strong>Post date:</strong>
+   {{post.created_at|date}}
+</p>
+
+<p style="margin-top:16px;">
+  <strong>Author:</strong> 
+  <a href="{% url 'blogger_details_page' post.blogger.pk %}">
+    {{post.blogger.user.username}}
+  </a>
+</p>
+
+<strong  style="margin-top:16px;display:block;">Description:</strong>
+<p style="margin-top:16px;line-height:150%;">
+  {{post.description}}
+</p>
+
+<h2 style="margin-top:24px;">Comments</h2>
+
+{% if comments|length <= 0 %}
+  <p style="margin-top:16px;">No Comments sofar, be the first to comment!</p>
+{% else %}
+  <ul style="padding-left:20px;">
+    {% for comment in comments %}
+    <li>{{comment.user.username}} ( {{comment.created_at|date}}, {{comment.created_at|time}} ) - {{comment.comment}}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+<div style="margin-top:24px;">
+  {% if not request.user.is_authenticated %}
+    <p><a href="{% url 'login' %}">Login</a> to add a new comment</p>
+  {% else %}
+    {% if not already_commented %}
+    <p><a href="{% url 'post_comment_page' post.pk %}">Add a new comment</a></p>
+    {% endif %}
+  {% endif %}
+</div>
+{% endblock content %}

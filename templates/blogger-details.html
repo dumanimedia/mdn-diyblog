@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{blogger.user.username}}{% endblock title %}
+
+{% block content %}
+<h1>Blogger: {{blogger.user.username}}</h1>
+
+<div style="margin:24px 0px;">
+  <h3 style="margin-bottom:10px;">Bio</h3>
+  <p>fhd j jklhfjh kj hfjkdhs  klhfkjlh akj lksdf jklhdkj ksh kjdsh h hsdk kjdhf k</p>
+</div>
+
+<div>
+  {% if posts|length <= 0 %}
+  <p>😓 User has no posts In the Database.</>
+  {% else %}
+  <h3 class="home-head">Blog List</h3>
+  <ul style="padding-left:20px;">
+    {% for post in posts %}
+    <li>
+      <a href="{% url 'post_details_page' post.pk %}">{{ post.title }}</a> ({{post.created_at|date}})
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endblock content %}

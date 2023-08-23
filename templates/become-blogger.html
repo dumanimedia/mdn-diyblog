@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block title %}Become A Blogger{% endblock title %}
+
+{% block content %}
+<h1>Become A Blogger</h1>
+
+<div style="margin:24px 0px 50px;">
+  <p>Once you've become a blogger, you'll become a <strong>staff member</strong> and be able to create posts, this action is irreversable!</p>
+</div>
+
+<form method="post" action=".">
+  {% csrf_token %}
+  <div>
+    <label for="bio" style="margin-bottom:10px;">Bio</label>
+    <textarea name="bio" id="bio"  required cols="40" rows="10"></textarea>
+    <button style="margin-top:16px;" type="submit">Submit</button>
+  </div>
+</form>
+{% endblock content %}

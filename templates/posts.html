@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}Blog Posts{% endblock title %}
+
+{% block content %}
+<h1 class="home-head">Blog posts</h1>
+{% if page.object_list|length <= 0 %}
+<p>😓 No Posts Found In the Database.</>
+{% else %}
+<ul style="padding-left:20px;">
+  {% for post in page.object_list %}
+  <li style="line-height:150%;">
+    <a href="{% url 'post_details_page' post.pk %}">{{ post.title }}</a> ({{post.created_at|date}}) -- 
+    <a href="{% url 'blogger_details_page' post.blogger.pk %}">{{post.blogger.user.username}}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<p style="margin-top:24px;">
+  {% if page.has_previous %}
+    <a href="?page={{ page.previous_page_number }}">&laquo; previous</a>
+  {% endif %}
+
+  <span class="current">
+    Page {{ page.number }} of {{ page.paginator.num_pages }}.
+  </span>
+
+  {% if page.has_next %}
+    <a href="?page={{ page.next_page_number }}">next  &raquo;</a>
+  {% endif %}
+</p>
+{% endblock content %}

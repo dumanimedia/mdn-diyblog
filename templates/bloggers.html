@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}Bloggers{% endblock title %}
+
+{% block content %}
+<h1 class="home-head">Bloggers ( Staff Members )</h1>
+
+{% if bloggers|length <= 0 %}
+<p>😓 No Users Found In the Database.</>
+{% else %}
+<ul style="padding-left:20px;">
+  {% for blogger in bloggers %}
+  <li><a href="{% url 'blogger_details_page' blogger.pk %}">{{ blogger.user.username }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock content %}

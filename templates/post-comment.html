@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}Post Comment{% endblock title %}
+
+{% block content %}
+<p>Post yout comment for: 
+  <a href="{% url 'post_details_page' post.pk %}">{{post.title}}</a>
+</p>
+
+<form method="post" action=".">
+  {% csrf_token %}
+  <div>
+    <label for="comment">Comment</label>
+    <textarea name="comment" id="comment" required cols="40" rows="10"></textarea>
+  </div>
+  <button style="margin-top:16px;" type="submit">Submit</button>
+</form>
+{% endblock content %}

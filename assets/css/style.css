@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: #f7f7f7;
+  transition: all 0.2s ease-in-out;
+}
+a:hover {
+  text-decoration: none;
+}
+a.auth {
+  display: block;
+  margin-bottom: 5px;
+}
+.errorlist.nonfield,
+.error {
+  list-style: none;
+  margin-bottom: 20px;
+}
+body {
+  font-size: 16px;
+  padding: 50px 5% 16px;
+  font-weight: 500;
+  color: #f7f7f7;
+  background-color: #161623;
+  font-family: 'montserrat', sans-serif;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  justify-content: center;
+}
+
+.lorem p {
+  margin-bottom: 16px;
+}
+
+header {
+  max-width: 90%;
+  background: #161623;
+  position: relative;
+  border-right: 1px solid #f7f7f7;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  z-index: 5;
+  padding: 50px 16px 0px 5%;
+  transition: width 0.2s ease-in-out;
+}
+
+header > div {
+  cursor: pointer;
+}
+header > aside {
+  transition: transform 0.2s ease-in-out;
+}
+
+.nav-list {
+  margin-bottom: 24px;
+  list-style: none;
+}
+.nav-list li:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+main {
+  width: 100%;
+  position: relative;
+}
+.auth-user p {
+  margin-bottom: 5px;
+}
+
+h1 {
+  text-align: left;
+  margin-bottom: 25px;
+}
+h1 + p,
+.lorem p {
+  line-height: 150%;
+}
+li {
+  margin: 10px 0px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 800px;
+  margin-top: 24px;
+  margin-inline: auto;
+  padding: 16px;
+}
+form > div {
+  width: 100%;
+}
+
+input,
+textarea {
+  padding: 8px 16px;
+  width: 100%;
+}
+label {
+  cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+@media (width >= 768px) {
+  body {
+    justify-content: flex-end;
+  }
+  main {
+    width: calc(100% - 200px);
+  }
+  header > div {
+    display: none;
+  }
+}
+
+@media (width < 768px) {
+  h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+  p,
+  li,
+  a,
+  span {
+    font-size: 15px;
+  }
+  body:not(.nav-active) header > div {
+    display: flex;
+    justify-content: center;
+  }
+  body:not(.nav-active) {
+    justify-content: flex-end;
+  }
+  body:not(.nav-active) header {
+    width: 50px;
+    padding-inline: 0px;
+  }
+  body:not(.nav-active) header > aside {
+    transform: translate3d(-500%, 0px, 0px);
+    visibility: hidden;
+    z-index: -2;
+  }
+  body.nav-active header {
+    width: 200px;
+  }
+  body.nav-active header > aside {
+    transform: translate3d(0%, 0px, 0px);
+  }
+  body:not(.nav-active) main {
+    width: calc(100% - 40px);
+  }
+}

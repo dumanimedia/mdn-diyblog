@@ -1,0 +1,5 @@
+Django==4.2.3
+django-dotenv==1.4.2
+pytz==2023.3
+asgiref==3.7.2
+sqlparse==0.4.4
